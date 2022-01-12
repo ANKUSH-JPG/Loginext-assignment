@@ -71,7 +71,7 @@ public class userController {
 			newUser.setName(user.getName());
 			newUser.setEmail(user.getEmail());
 			newUser.setPhone(user.getPhone());
-			newUser.setWebsite(user.getWebsite());
+			newUser.setCompany(user.getCompany());
 			
 			user_repository.save(newUser);
 			
