@@ -25,6 +25,8 @@ import axios from 'axios';
     const updateUserToDb=async (id,updatedData,setApiData,ApiData)=>{
         try{
             const data=await axios.patch(`http://localhost:8080/user/${id}`,updatedData);
+
+            console.log(data.data)
             
             const newData=ApiData.map((oldData)=>{
                     if(oldData.id===id){

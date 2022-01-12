@@ -4,15 +4,9 @@ import { updateUserToDb } from "../db_services/DbOperations";
 
 const UserForm = (props) => {
 
-    /*const ApiCall=async ()=>{
-        const ApiUrl="http://localhost:8080/user";
-        const Api=await axios.get(ApiUrl);
-        props.setApiData(Api.data)
-    }*/
-
-
     const OnFinishFun=()=>{
         props.setModal(false);
+        console.log(props.form.getFieldValue());
         updateUserToDb(props.id,props.form.getFieldValue(),props.setApiData,props.ApiData);
         
     }
@@ -26,7 +20,12 @@ const UserForm = (props) => {
             {
                 span:16
             }
-        }  form={props.form} onFinish={OnFinishFun}>
+        }  form={props.form} onFinish={OnFinishFun} initialValues={{
+            name:props.details.name,
+            email:props.details.email,
+            phone:props.details.phone,
+            website:props.details.website
+        }}>
             <Form.Item label="Name" name="name"  rules={
                 [{
                     required:true,
@@ -74,7 +73,8 @@ const UserForm = (props) => {
             }>
                 <Input onChange={(val)=>{
                     const data=val.target.value;
-                    props.form.setFieldsValue({company:{name:data}});
+                    // props.form.setFieldsValue({company:{name:data}});
+                    props.form.setFieldsValue({website:data});
                 }
                 }/>
             </Form.Item>
