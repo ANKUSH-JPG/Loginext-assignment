@@ -1,0 +1,30 @@
+package com.example.grocery.controller;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.grocery.model.Tutorial;
+
+import com.example.grocery.services.TutorialServices;
+
+@RestController
+public class controller {
+	
+	TutorialServices ts=new TutorialServices();
+	
+	@GetMapping("/tutorial")
+	public ResponseEntity<List<Tutorial>> getTutorials(){
+		return ts.getTutorial();
+	}
+	
+	@PostMapping("/tutorial")
+	public ResponseEntity<Tutorial> createTutorial(@RequestBody Tutorial tutorial) {
+		return ts.createTutorial(tutorial);
+	}
+	
+}

@@ -1,0 +1,68 @@
+
+/*IMPORT OTHER CSS*/
+@import '~antd/dist/antd.css';
+
+/* CSS ON HTML ELEMENTS */
+
+*{
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+  margin: 0;
+  color: rgba(0,0,0,.65);
+  font-size: 14px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  background-color: #fff;
+  -webkit-font-feature-settings: "tnum";
+  font-feature-settings: "tnum","tnum";
+}
+
+/* CSS ON USER CARD */
+.AllUserCards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.OuterUserCard{
+  width: 25%;
+}
+
+.InnerUserCard{
+  margin: 15px;
+}
+
+img{
+  width: 200px;
+  height: 200px;
+  background-color: #F5F5F5;
+}
+
+ul.ant-card-actions{
+  background-color: #FAFAFA;
+}
+
+.DescIcon{
+  font-size: 18px;
+  color: rgba(0,0,0,.56);
+}
+
+.Desc{
+  margin-left: 10px;
+}
+
+.icons{
+  font-size: larger;
+}

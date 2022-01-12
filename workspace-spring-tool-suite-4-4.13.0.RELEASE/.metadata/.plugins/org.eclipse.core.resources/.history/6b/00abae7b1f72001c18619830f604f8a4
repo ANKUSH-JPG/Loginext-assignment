@@ -1,0 +1,1 @@
+spring.data.mongodb.uri=mongodb+srv://ankush:7teSy0@1@cluster0.kkzyp.mongodb.net/tutorial_db?retryWrites=true&w=majority

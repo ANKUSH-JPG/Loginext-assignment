@@ -1,0 +1,12 @@
+package com.example.grocery.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.grocery.repository.TutorialRepository;
+
+public class TutorialServices {
+	
+	@Autowired
+	TutorialRepository tutorialRepository;
+
+}
