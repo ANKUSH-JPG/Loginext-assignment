@@ -1,4 +1,4 @@
-import { Pagination } from "antd";
+import { Pagination,notification} from "antd";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import CardCaller from "./components/CardCaller";
@@ -13,13 +13,15 @@ const App = () => {
   const FetchApiData = async (ApiUrl) => {
     try {
       const Api = await axios.get(ApiUrl);
-      console.log(Api.data)
       setApiData(Api.data.users)
       setcurrentPage(Api.data.currentPage);
       settotalUsers(Api.data.totalUsers);
+      return Api;
     }
     catch (err) {
-      console.log(err);
+      notification.warning({
+        message:"OOps!!! Error fetching data"
+      });
     }
   }
 
@@ -27,13 +29,13 @@ const App = () => {
       setcurrentPage(page-1);
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     const ApiUrl = `http://localhost:8080/user/pagination/?page=${currentPage}`;
-    FetchApiData(ApiUrl);
-    setTimeout(() => {
+    const Api=await FetchApiData(ApiUrl);
+    if(Api.status===200){
       setLoader(false);
-    }, 3000)
-
+    }
+    
   }, [currentPage])
 
   return (
@@ -41,7 +43,7 @@ const App = () => {
       {Loadercheck ? <Loader /> :
         <div>
           <CardCaller ApiData={ApiData} setApiData={setApiData} />
-          <div className="pagination"><Pagination defaultCurrent={1}  onChange={pageClick} defaultPageSize={5} total={totalUsers}/></div>
+          {totalUsers>0 ? <div className="pagination"><Pagination defaultCurrent={1}  onChange={pageClick} defaultPageSize={4} total={totalUsers}/></div> : <div></div>}
         </div>}
     </div>
   );

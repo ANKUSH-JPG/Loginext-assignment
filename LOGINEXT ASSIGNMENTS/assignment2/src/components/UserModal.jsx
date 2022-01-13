@@ -5,7 +5,6 @@ import UserForm from "./UserForm";
 const UserModal = (props) => {
 
     const [form]=Form.useForm();
-    
 
     /*const handleModalOk = () => {
         

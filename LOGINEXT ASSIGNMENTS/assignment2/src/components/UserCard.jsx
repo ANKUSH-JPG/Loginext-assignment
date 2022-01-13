@@ -4,7 +4,7 @@ import { EditOutlined, DeleteFilled, HeartOutlined, MailOutlined, PhoneOutlined,
 import Meta from "antd/lib/card/Meta";
 
 import UserModal from "./UserModal";
-import { updateLikeToDb,deleteUserFromDb } from "../db_services/DbOperations";
+import { updateLikeToDb, deleteUserFromDb } from "../db_services/DbOperations";
 
 
 const UserCard = (props) => {
@@ -12,15 +12,19 @@ const UserCard = (props) => {
     const [heart, setheart] = useState(props.details.like);
     const [UpdateModal, setModal] = useState(false);
 
-    const heartClicked = (id) => {
+    const heartClicked = async (id) => {
 
         if (heart === true) {
-            updateLikeToDb(id,false);
-            setheart(false);
+            const Api = await updateLikeToDb(id, false);
+            if (Api.status === 200) {
+                setheart(false);
+            }
         }
         else {
-            updateLikeToDb(id,true);
-            setheart(true);
+            const Api = await updateLikeToDb(id, true);
+            if (Api.status === 200) {
+                setheart(true);
+            }
         }
     }
 
@@ -34,12 +38,15 @@ const UserCard = (props) => {
 
     }
 
-    const deleteCard = (id) => {
-        
-        deleteUserFromDb(id);
-        const newUserList = props.ApiData.filter((user) => user.id !== id)
+    const deleteCard = async (id) => {
 
-        props.setApiData(newUserList);
+        const Api = await deleteUserFromDb(id);
+        if (Api.status === 204) {
+            const newUserList = props.ApiData.filter((user) => user.id !== id)
+
+            props.setApiData(newUserList);
+        }
+
     }
 
     return (

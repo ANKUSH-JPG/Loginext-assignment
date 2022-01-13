@@ -6,7 +6,7 @@ const UserForm = (props) => {
 
     const OnFinishFun=()=>{
         props.setModal(false);
-        console.log(props.form.getFieldValue());
+        // console.log(props.form.getFieldValue());
         updateUserToDb(props.id,props.form.getFieldValue(),props.setApiData,props.ApiData);
         
     }
