@@ -45,6 +45,7 @@ public class userController {
 		}
 	}
 	
+	
 	@PostMapping("/user")
 	public ResponseEntity<userModal> createUser(@RequestBody userModal user){
 		try {
@@ -100,7 +101,7 @@ public class userController {
 	
 	/*PAGINATION*/
 	@GetMapping("/user/pagination")
-	public ResponseEntity<Map<String,Object>> userPagination(@RequestParam(defaultValue="0") int page,@RequestParam(defaultValue="2") int size){
+	public ResponseEntity<Map<String,Object>> userPagination(@RequestParam(defaultValue="0") int page,@RequestParam(defaultValue="4") int size){
 		try {
 			List<userModal> users=new ArrayList<userModal>();
 			Pageable paging=PageRequest.of(page, size);
